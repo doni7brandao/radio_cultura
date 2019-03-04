@@ -1,0 +1,774 @@
+﻿<html>
+  <head>
+  	<title>Gerador de Código FFMp3</title>
+	  <style type="text/css">
+  .content #code-generator table tr .descriptor.mandatory {
+	font-weight: bold;
+	font-family: Verdana, Geneva, sans-serif;
+}
+  .content h1 {
+	font-family: Verdana, Geneva, sans-serif;
+}
+  .content p {
+	font-family: Verdana, Geneva, sans-serif;
+}
+  .content #code-generator table tr .descriptor {
+	font-family: Verdana, Geneva, sans-serif;
+}
+  .sec {
+	font-family: Verdana, Geneva, sans-serif;
+}
+  </style>
+  </head>
+    <div class="main">
+    <div class="content" >
+      <h1>Gerador de código FFMp3</h1>		
+      <p>Este gerador é exclusivo para streamings do servidor audio1.cmaudioevideo.com, insira apenas o número da porta, por ex: 8050 <br/>
+	     Para testar os skins configure o player gere o código, depois apenas mude o skin e gere o código novamente.<br>
+        OBS: caso o player exibido abaixo não esteja reproduzindo existe algum problema em seu streaming, verifique se o mesmo está inicializado<br>
+        caso esteja entre em contato com nosso suporte. As opções em negrito são obrigatórias.<br/>	
+      </p> 
+	  <script type="text/javascript" src="jscolor/jscolor.js"></script>
+
+	  <script type="text/javascript" src="mrp.js"></script>
+
+	  <form id="code-generator" name="code-generator" >
+	  
+	  <table>
+   	  
+  	    <tr>
+   	    	<td class="descriptor mandatory">Porta do seu Streaming:</td>
+   	    	<td colspan="3" ><input type="text" id="url" name="url" value="" style="width:475px;" /></td>
+   	    </tr>
+		<tr>
+			
+   	    <tr>
+   	    	<td class="descriptor mandatory">Nome da Rádio:</td>
+   	    	<td width="32%"><input type="text" id="title" name="title" value="" maxlength="20" /></td>
+   	    	<td class="descriptor mandatory">Codec de Áudio:</td>
+   	    	<td>
+				<select name="codec" id="codec" onChange="javascript:updateFormFields();">
+					<option value="aac" >AAC</option>
+					<option value="mp3" selected >MP3</option>
+				</select>
+			</td>
+   	    </tr>
+   	    <tr>
+   	    	<td class="descriptor mandatory">Skin (modelo):</td>
+   	    	<td>
+				<select id="skin" name="skin">
+					<option value="" disabled>==Official Skins==</option>
+											<option value="mcclean" selected >McClean (180x60)</option>
+											<option value="radiovoz"  >RadioVoz (220x69)</option>
+											<option value="faredirfare"  >Faredirfare (269x52)</option>
+											<option value="tweety"  >Tweety (189x62)</option>
+											<option value="compact"  >Compact (191x46)</option>
+											<option value="repvku-100"  >Repvku-100 (100x25)</option>
+											<option value="darkconsole"  >DarkConsole (190x62)</option>
+											<option value="tiny"  >Tiny (130x60)</option>
+											<option value="original"  >Original (329x21)</option>
+											<option value="eastanbul"  >Eastanbul (467x26)</option>
+											<option value="cm"  >Barra CM (467x26)</option>
+											<option value="substream"  >Substream (180x30)</option>
+											<option value="easyplay"  >EasyPlay (231x30)</option>
+											<option value="stockblue"  >Stockblue (476x26)</option>
+											<option value="simple-blue"  >Simple Blue [M] (300x122)</option>
+											<option value="simple-gray"  >Simple Gray [M] (300x122)</option>
+											<option value="simple-green"  >Simple Green [M] (300x122)</option>
+											<option value="simple-orange"  >Simple Orange [M] (300x122)</option>
+											<option value="simple-red"  >Simple Red [M] (300x122)</option>
+											<option value="simple-violet"  >Simple Violet [M] (300x122)</option>
+										<option value="" disabled>==Community Skins==</option>
+											<option value="scradio"  >SCRadio (160x100)</option>
+											<option value="repvku-115"  >Repvku-115 (115x25)</option>
+											<option value="simcha-232-toggle"  >Simcha-232 [T] (232x58)</option>
+											<option value="simcha-232"  >Simcha-232 (232x58)</option>
+											<option value="simcha-320"  >Simcha-320 (320x58)</option>
+											<option value="oldradio"  >OldRadio (205x132)</option>
+											<option value="oldstereo"  >OldStereo (318x130)</option>
+											<option value="xm"  >Xm (234x66)</option>
+											<option value="neon"  >Neon (240x76)</option>
+											<option value="neonslim"  >NeonSlim (501x32)</option>
+											<option value="greyslim"  >GreySlim (494x35)</option>
+											<option value="bogusblue"  >BogusBlue (660x266)</option>
+											<option value="bones"  >Bones (341x125)</option>
+											<option value="combat"  >Combat (675x247)</option>
+											<option value="dragonblues"  >DragonBlues (400x145)</option>
+											<option value="lemon"  >Lemon (410x60)</option>
+											<option value="limed"  >Limed (397x115)</option>
+											<option value="longtail"  >Longtail (498x61)</option>
+											<option value="pinhead"  >Pinhead (421x120)</option>
+											<option value="retro"  >Retro (669x259)</option>
+											<option value="silvertune"  >Silvertune (200x104)</option>
+											<option value="testskin"  >Test/Develop (189x61)</option>
+									</select>
+			</td>
+   	    	<td class="descriptor">Mensagem Inicial:</td>
+   	    	<td><input type="text" id="welcome" name="welcome" value="" maxlength="20" style="width:135px;" /></td>
+   	    </tr>
+   	    <tr>
+   	    	<td class="descriptor">Linguagem:</td>
+   	    	<td>
+   	    		<select name="lang" id="lang">
+					<option value="auto" selected >-Automatic-</option>
+					<option value="bg" >Bulgarian</option>
+					<option value="hr" >Croatian</option>
+					<option value="nl" >Dutch</option>
+					<option value="en" >English</option>
+					<option value="fi" >Finnish</option>
+					<option value="fr" >French</option>
+					<option value="de" >German</option>
+					<option value="el" >Greek</option>
+					<option value="hu" >Hungarian</option>
+					<option value="it" >Italian</option>
+					<option value="nb" >Norwegian</option>
+					<option value="pl" >Polish</option>
+					<option value="pt" >Portuguese</option>
+					<option value="ru" >Russian</option>
+					<option value="sl" >Slovene</option>
+					<option value="es" >Spanish</option>
+					<option value="sv" >Swedish</option>
+					<option value="tr" >Turkish</option>
+				</select>
+			</td>
+   	    	<td class="descriptor">Volume Inicial:</td>
+   	    	<td><input type="text" name="volume" id="volume" value="100" maxlength="3" style="width:40px;" />%</td>
+   	    </tr>
+   	    <tr>
+   	    	<td class="descriptor">Auto-Play:</td>
+   	    	<td><input type="checkbox" checked name="autoplay" id="autoplay" /></td>
+   	    	<td class="descriptor">Flash WMode:</td>
+   	    	<td>
+   	    		<select name="wmode" id="wmode" onChange="javascript:updateFormFields();">
+					<option value="window" >Window</option>
+					<option value="Opaque" >Opaque (*)</option>
+					<option value="transparent" selected >Transparent (*)</option>
+				</select>
+			</td>
+   	    </tr>
+   	    <tr >
+   	    	<td class="descriptor"><span id="trackinglabel">Habilitar Monitoramento:</span></td>
+   	    	<td><input type="checkbox" name="tracking" id="tracking" /></td>
+   	    	
+   	    	<td class="descriptor">Habilitar Eventos JS:</td>
+   	    	<td ><input type="checkbox" name="jsevents" id="jsevents" /></td>
+   	    </tr>
+   	    <tr >
+   	    	<td class="descriptor"><div id="bufferingDIV2">Tempo de Buffering:</div></td>
+   	    	<td><div id="bufferingDIV1">
+				<input type="text" name="buffering" id="buffering" value="5" maxlength="4" style="width:40px;" /> secs.
+   	    	</div></td>
+   	    	
+   	    	<td class="descriptor"><div id="bgcolorDIV2">Cor de fundo:</div></td>
+   	    	<td ><div id="bgcolorDIV1">
+				#<input type="text" class="color" name="bgcolor" id="bgcolor" value="FFFFFF" maxlength="6" style="width:70px;" />
+   	    	</div></td>
+   	    </tr>
+   	    <tr>
+   	    	<td align=center colspan="4" >
+   	    	<input type="button" class="sec" onClick="generateCode();" value="Gerar código!" />
+   	    	<input type="reset" class="sec" onClick="setTimeout('updateFormFields();',200);" value="Limpar Formulário" />
+   	    	</td>
+   	    </tr>
+
+	</table></form>
+
+
+	<div id="generated-error" class="generated-error" style="display:none;"></div>
+
+	<div id="generated-warn" class="generated-warn" style="display:none;"></div>
+
+	<div id="generated-ok" class="generated-ok" style="display:none;"></div>
+
+	<div id="generated" style="display:none;" align="center" >
+
+	    <hr/>
+
+		Este será o player para o seu site.<br/>
+
+		Caso esteja de acordo continue lendo abaixo, caso contrário realize os ajustes desejados<br/><br/>
+
+		<div id="generated-working">
+
+	    </div>
+
+	    <div id="ffmp3-last-event">
+
+	    </div>
+
+	    <hr/>
+
+	    Aqui está o código HTML do seu player. <br/>
+
+	    Copie este código e insira no local que você deseja que o player seja exibido no site.<br/>
+
+	    <textarea id="generated-code" name="generated-code" rows="16" cols="75" readonly >
+
+	    </textarea>
+
+	    <hr/>
+
+    </div>
+
+	<br/>
+
+    <h2>&nbsp;</h2>
+<script type="text/javascript">
+
+			var skinsArray={"mcclean":{"official":true,"name":"McClean","fname":"mcclean","width":180,"height":60,"author":"Mat&iacute;as Rubio","country":"Argentina","default":true,"elegible":true},
+			"radiovoz":{"official":true,"name":"RadioVoz","fname":"radiovoz","width":220,"height":69,"author":"Juan Vera","country":"Argentina","default":false,"elegible":true},
+			"faredirfare":{"official":true,"name":"Faredirfare","fname":"faredirfare","width":269,"height":52,"author":"Faredirfare","country":"Turkey","elegible":false},
+			"tweety":{"official":true,"name":"Tweety","fname":"tweety","width":189,"height":62,"author":"Juan Vera","country":"Argentina","elegible":true},
+			"compact":{"official":true,"name":"Compact","fname":"compact","width":191,"height":46,"author":"Juan Vera","country":"Argentina","elegible":true},
+			"repvku-100":{"official":true,"name":"Repvku-100","fname":"repvku-100","width":100,"height":25,"author":"Andr&eacute;s Felix","country":"Uruguay","elegible":false},
+			"darkconsole":{"official":true,"name":"DarkConsole","fname":"darkconsole","width":190,"height":62,"author":"Juan Vera","country":"Argentina","elegible":true},
+			"tiny":{"official":true,"name":"Tiny","fname":"tiny","width":130,"height":60,"author":"Giorgos Trakadas","country":"Grece","elegible":false},
+			"original":{"official":true,"name":"Original","fname":"original","width":329,"height":21,"author":"Bill Farmer","country":"United Kingdom","elegible":false},
+			"eastanbul":{"official":true,"name":"Eastanbul","fname":"eastanbul","width":467,"height":26,"author":"Tarkan Kaya","country":"Turkey","elegible":false},
+			"cm":{"official":true,"name":"BarraCM","fname":"cm","width":467,"height":26,"author":"Tarkan Kaya - CM","country":"Turkey","elegible":false},
+			"substream":{"official":true,"name":"Substream","fname":"substream","width":180,"height":30,"author":"treefish.org","country":"Austria","elegible":false},
+			"easyplay":{"official":true,"name":"EasyPlay","fname":"easyplay","width":231,"height":30,"author":"Jens","country":"Holland","elegible":false},
+			"stockblue":{"official":true,"name":"Stockblue","fname":"stockblue","width":476,"height":26,"author":"Jens","country":"Holland","elegible":false},
+			"simple-blue":{"official":true,"name":"Simple Blue [M]","fname":"simple-blue","width":300,"height":122,"author":"Ezequiel Geringer","country":"Argentina",
+			"elegible":false},"simple-gray":{"official":true,"name":"Simple Gray [M]","fname":"simple-gray","width":300,"height":122,"author":"Ezequiel Geringer","country":"Argentina","elegible":false},
+			"simple-green":{"official":true,"name":"Simple Green [M]","fname":"simple-green","width":300,"height":122,"author":"Ezequiel Geringer","country":"Argentina","elegible":false},
+			"simple-orange":{"official":true,"name":"Simple Orange [M]","fname":"simple-orange","width":300,"height":122,"author":"Ezequiel Geringer","country":"Argentina","elegible":false},
+			"simple-red":{"official":true,"name":"Simple Red [M]","fname":"simple-red","width":300,"height":122,"author":"Ezequiel Geringer","country":"Argentina","elegible":false},
+			"simple-violet":{"official":true,"name":"Simple Violet [M]","fname":"simple-violet","width":300,"height":122,"author":"Ezequiel Geringer","country":"Argentina","elegible":false},
+			"scradio":{"official":false,"name":"SCRadio","fname":"scradio","width":160,"height":100,"author":"Andy Scott","country":"United Kingdom","elegible":true},
+			"repvku-115":{"official":false,"name":"Repvku-115","fname":"repvku-115","width":115,"height":25,"author":"Andr&eacute;s Felix","country":"Uruguay","elegible":false},"simcha-232-toggle":{"official":false,"name":"Simcha-232 [T]","fname":"simcha-232-toggle","width":232,"height":58,
+			"author":"Victor Benjoya","country":"Brasil","elegible":false},"simcha-232":{"official":false,"name":"Simcha-232","fname":"simcha-232","width":232,"height":58,"author":"Victor Benjoya","country":"Brasil","elegible":false},
+			"simcha-320":{"official":false,"name":"Simcha-320","fname":"simcha-320","width":320,"height":58,"author":"Victor Benjoya","country":"Brasil","elegible":false},
+			"oldradio":{"official":false,"name":"OldRadio","fname":"oldradio","width":205,"height":132,"author":"Jhim Preston","country":"Colombia","elegible":false},
+			"oldstereo":{"official":false,"name":"OldStereo","fname":"oldstereo","width":318,"height":130,"author":"Jhim Preston","country":"Colombia","elegible":false},
+			"xm":{"official":false,"name":"Xm","fname":"xm","width":234,"height":66,"author":"Andy Scott","country":"United Kingdom","elegible":false},
+			"neon":{"official":false,"name":"Neon","fname":"neon","width":240,"height":76,"author":"Andy Scott","country":"United Kingdom","elegible":false},
+			"neonslim":{"official":false,"name":"NeonSlim","fname":"neonslim","width":501,"height":32,"author":"Andy Scott","country":"United Kingdom","elegible":false},
+			"greyslim":{"official":false,"name":"GreySlim","fname":"greyslim","width":494,"height":35,"author":"Andy Scott","country":"United Kingdom","elegible":false},
+			"bogusblue":{"official":false,"name":"BogusBlue","fname":"bogusblue","width":660,"height":266,"author":"Jens","country":"Holland","elegible":false},
+			"bones":{"official":false,"name":"Bones","fname":"bones","width":341,"height":125,"author":"Jens","country":"Holland","elegible":false},
+			"combat":{"official":false,"name":"Combat","fname":"combat","width":675,"height":247,"author":"Jens","country":"Holland","elegible":false},
+			"dragonblues":{"official":false,"name":"DragonBlues","fname":"dragonblues","width":400,"height":145,"author":"Jens","country":"Holland","elegible":false},
+			"lemon":{"official":false,"name":"Lemon","fname":"lemon","width":410,"height":60,"author":"Jens","country":"Holland","elegible":false},
+			"limed":{"official":false,"name":"Limed","fname":"limed","width":397,"height":115,"author":"Jens","country":"Holland","elegible":false},
+			"longtail":{"official":false,"name":"Longtail","fname":"longtail","width":498,"height":61,"author":"Jens","country":"Holland","elegible":false},
+			"pinhead":{"official":false,"name":"Pinhead","fname":"pinhead","width":421,"height":120,"author":"Jens","country":"Holland","elegible":false},
+			"retro":{"official":false,"name":"Retro","fname":"retro","width":669,"height":259,"author":"Jens","country":"Holland","elegible":false},
+			"silvertune":{"official":false,"name":"Silvertune","fname":"silvertune","width":200,"height":104,"author":"Jens","country":"Holland","elegible":false},
+			"testskin":{"official":false,"name":"Test\/Develop","fname":"testskin","width":189,"height":61,"author":"Test Skin","country":"Download if you want to learn how to make skins","elegible":false}};
+
+	
+
+
+
+			function $(id){
+
+				return document.getElementById(id);
+
+			}
+
+			function text(id){
+
+				return $(id).value.replace(/&/g,'%26').replace(/"/g,'%22');
+
+			}
+
+			function setText(id,value){
+
+				return $(id).value=value;
+
+			}
+
+			
+
+			function addMessage(type,msg){
+
+				var code='&bull;&nbsp; '+msg+'<br/>';
+
+				$('generated-'+type).style.display='block';
+
+				$('generated-'+type).innerHTML+=code;
+
+			}
+
+			
+
+			function clearMessages(){
+
+				$('generated-warn').style.display='none';
+
+				$('generated-warn').innerHTML='';
+
+				$('generated-error').style.display='none';
+
+				$('generated-error').innerHTML='';
+
+				$('generated-ok').style.display='none';
+
+				$('generated-ok').innerHTML='';
+
+				$('generated-working').innerHTML='';
+
+				$('generated-code').innerHTML='';			
+
+				$('generated').style.display='none';
+
+				$('ffmp3-last-event').innerHTML='';			
+
+			}
+
+			
+
+			function validateForm(){
+
+				clearMessages();
+
+				var ret=true;
+
+				var url=text('url');
+
+				if(url==''){
+
+					addMessage('error','Por favor insira o  <strong>"Numero da Porta"</strong> do Stream.');
+
+					ret=false;
+
+				}
+
+				if(url.substr(url.length-4)=='.m3u'){
+
+					addMessage('error','Please remove the <strong>.m3u</strong> extension from your url. Maybe you\'re trying to use <strong>'+url.substr(0,url.length-4)+'</strong>');
+
+					ret=false;
+
+				}				
+
+				if(text('title')==''){
+
+					addMessage('error','Por favor  preencha o <strong>"Nome da Rádio"</strong>.');
+
+					ret=false;
+
+				}
+
+
+
+				if(isNaN(text('volume')) || text('volume') > 100 || text('volume') < 0 ) {
+
+					addMessage('error',' <strong>Volume</strong> inválido. Utilize <strong>números entre 0 e 100</strong>. Ex: <strong>65</strong>');
+
+					ret=false;
+
+				}
+
+
+
+				if(text('codec')=='mp3'){
+
+					if(isNaN(text('buffering')) || text('buffering') > 3600 || text('buffering') < 0 ) {
+
+						addMessage('error','<strong>Tempo de Buffering</strong> Inválido. Utilize valores <strong>entre 0 e 3600</strong>. Example: <strong>10</strong>');
+
+						ret=false;
+
+					}
+
+				}
+
+
+
+				if(text('wmode')!='window'){
+
+					addMessage('warn','Ao utilizar <strong>WMODE</strong> <strong>"Transparent"</strong> e <strong>"Opaque"</strong> será  <strong>desabilitado o Mouse-Weel-Volume-Control</strong> nos navegadores FFox, Chrome e Safari.');
+
+				}
+
+				if(text('codec')=='ogg'){
+
+					addMessage('warn','Please note that using <strong>OGG</strong> codec will cause FFMp3 to need a well configured <strong>crossdomain.xml</strong> file placed <strong>at the Streaming Server</strong>, otherwise you\'ll get a <strong>"Security Error"</strong> message. Check to the <a href="faq.php">F.A.Q.</a> for details.');
+
+				}
+
+				if(text('wmode')!='transparent'){
+
+					addMessage('warn','Utilizando <strong>WMODE</strong> <strong>"Opaque"</strong> ou <strong>"Window"</strong> requer que você <strong>informe corretamente a cor de fundo de seu site</strong> para evitar que ocorram pixeis brancos em volta das imagens de alguns skins.');
+
+				}				
+
+				if(text('wmode')!='transparent' && !validateColor('#'+text('bgcolor'))){
+
+					addMessage('warn','<strong>Cor de Fundo</strong> Inválida. Utilize o formato <strong>#RRGGBB</strong> . Ex: <strong>#FFFFFF</strong>');
+
+				}
+
+				if($('jsevents').checked){
+
+					addMessage('warn','Please note that using <strong>JS Events</strong> will cause FFMp3 to call a Javascript function named <strong>ffmp3Callback</strong> to inform new events. Check to the <a href="faq.php">F.A.Q.</a> for details.');
+
+				}
+
+
+
+
+
+				if(skinsArray[text('skin')].swfname=='ffmp3-config.swf'){
+
+					sname=skinsArray[text('skin')].name;
+
+					slink='skins/'+skinsArray[text('skin')].fname+'.zip';
+
+					author=skinsArray[text('skin')].author;
+
+					addMessage('ok','Diferentemente do código gerado diretamente do site do FFMP3 você não precisa salvar nenhum arquivo em seu site utilizando este código.</a>');
+
+				}				
+
+				
+
+				return ret;
+
+			}
+
+			
+
+			function updateFormFields(){
+
+				if(text('wmode')!='transparent'){
+
+					$('bgcolorDIV1').style.display='block';
+
+					$('bgcolorDIV2').style.display='block';
+
+				}else{
+
+					$('bgcolorDIV1').style.display='none';
+
+					$('bgcolorDIV2').style.display='none';
+
+				}			
+
+				if(text('codec')=='mp3'){
+
+					$('bufferingDIV1').style.display='block';
+
+					$('bufferingDIV2').style.display='block';
+
+				}else{
+
+					$('bufferingDIV1').style.display='none';
+
+					$('bufferingDIV2').style.display='none';
+
+				}			
+
+			}
+
+			
+
+			function showIntroInput(){
+
+				if(document.getElementById('introfile').checked){
+
+					document.getElementById('introfileDIV1').style.display='block';
+
+				}else{
+
+					document.getElementById('introfileDIV1').style.display='none';
+
+				}
+
+			}
+
+			
+
+			function validateColor(colorcode){
+
+			     var regColorcode = /^(#)?([0-9a-fA-F]{6})?$/;
+
+			     return regColorcode.test(colorcode);
+
+			}			
+
+			
+
+			function loadExample(){
+
+				$('code-generator').reset();
+
+				
+
+				setText('url','http://streams.museter.com:8002/;');
+
+				setText('title','Radio Vermont');
+
+				
+
+				setText('welcome','WELCOME TO...');
+
+				setText('volume','65');
+
+				$('autoplay').checked=true;
+
+			}
+			
+			function setHostedMode(hosted){
+				$('trackinglabel').style.display=$('tracking').style.display=(hosted)?'none':'block';
+			}
+
+
+			function generateUserHostedCode(){
+				var swf;
+				var width;
+				var height;
+				var flashvars="";
+				var wmode=text('wmode');
+				var bgcolor="";
+				
+				swf='muses.swf';
+				width=skinsArray[text('skin')].width;
+				height=skinsArray[text('skin')].height;
+						
+				flashvars='url='+text('url')+
+						'&lang='+text('lang')+
+						'&codec='+text('codec')+
+						'&volume='+text('volume');
+
+				if(text('wmode')!='transparent'){
+					bgcolor=' bgcolor="#'+text('bgcolor')+'"';
+				}
+				
+				
+
+				if($('autoplay').checked){
+					flashvars+='&autoplay=true';
+				}
+
+				if($('tracking').checked){
+					flashvars+='&tracking=true';
+				}else{
+					flashvars+='&tracking=false';
+				}				
+
+				if($('jsevents').checked){
+					flashvars+='&jsevents=true';
+				}else{
+					flashvars+='&jsevents=false';
+				}				
+
+				if(text('codec')=='mp3' && text('buffering')!=''){
+					flashvars+='&buffering='+text('buffering');
+				}
+				
+				if((skinsArray[text('skin')].fname!='original') && (skinsArray[text('skin')].fname!='tiny')){
+				    flashvars+='&skin=http://www.cmaudioevideo.com/muses/ffmp3-'+skinsArray[text('skin')].fname+'.xml';
+				}else{
+				    flashvars+='&skin=http://www.cmaudioevideo.com/muses/'+skinsArray[text('skin')].fname;
+				}
+				
+				flashvars+='&title='+text('title').replace(' ','%20');
+				if(text('welcome')!=''){
+					flashvars+='&welcome='+text('welcome').replace(' ','%20');
+				}
+				
+				$('generated').style.display="block";				
+				code='<!-- BEGINS: AUTO-GENERATED MUSES RADIO PLAYER CODE -->'+"\n"+
+					'<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'+width+'" height="'+height+'"'+bgcolor+'>'+"\n"+
+					'<param name="movie" value="'+swf+'" />'+"\n"+
+					'<param name="flashvars" value="'+flashvars+'" />'+"\n"+
+					'<param name="wmode" value="'+wmode+'" />'+"\n"+
+					'<param name="allowscriptaccess" value="always" />'+"\n"+
+					((text('wmode')!='transparent')?('<param name="bgcolor" value="#'+text('bgcolor')+'" />'+"\n"):'')+
+					'<param name="scale" value="noscale" />'+"\n"+
+					'<embed src="'+swf+'" flashvars="'+flashvars+'" width="'+width+'" scale="noscale" '+
+					'height="'+height+'" wmode="'+wmode+'"'+bgcolor+' allowscriptaccess="always" type="application/x-shockwave-flash" />'+"\n"+
+					'</object>'+"\n"+
+					'<!-- ENDS: AUTO-GENERATED MUSES RADIO PLAYER CODE -->';
+				$('generated-code').value=code;
+				$('generated-working').innerHTML=code;
+				$('rememberDownload').style.display="block";
+			}
+
+
+			function generateCode(){
+
+				if(!validateForm()){
+
+					return;
+
+				}
+
+				var swf;
+
+				var width;
+
+				var height;
+
+				var flashvars="";
+
+				var wmode=text('wmode');
+
+				var bgcolor="";
+
+				
+
+				swf='muses.swf';
+
+				width=skinsArray[text('skin')].width;
+
+				height=skinsArray[text('skin')].height;
+
+						
+
+				flashvars='url=http://audio1.cmaudioevideo.com:'+text('url')+ '/stream'+
+
+						'&lang='+text('lang')+
+
+						'&codec='+text('codec')+
+
+						'&volume='+text('volume');
+
+
+
+				if(text('wmode')!='transparent'){
+
+					bgcolor=' bgcolor="#'+text('bgcolor')+'"';
+
+				}
+
+				
+
+				
+
+
+
+				if($('autoplay').checked){
+
+					flashvars+='&autoplay=true';
+
+				}
+
+
+
+				if($('tracking').checked){
+
+					flashvars+='&traking=true';
+
+				}else{
+
+					flashvars+='&traking=false';
+
+				}				
+
+
+
+				if($('jsevents').checked){
+
+					flashvars+='&jsevents=true';
+
+				}else{
+
+					flashvars+='&jsevents=false';
+
+				}				
+
+
+
+				if(text('codec')=='mp3' && text('buffering')!=''){
+
+					flashvars+='&buffering='+text('buffering');
+
+				}
+
+				
+
+				if(text('codec')=='mp3' && text('buffering')!=''){
+					flashvars+='&buffering='+text('buffering');
+				}
+				
+				if((skinsArray[text('skin')].fname!='original') && (skinsArray[text('skin')].fname!='tiny')){
+				    flashvars+='&skin=http://www.cmaudioevideo.com/muses/ffmp3-'+skinsArray[text('skin')].fname+'.xml';
+				}else{
+				    flashvars+='&skin=http://www.cmaudioevideo.com/muses/'+skinsArray[text('skin')].fname;
+				}
+
+
+				
+
+				flashvars+='&title='+text('title').replace(' ','%20');
+
+				if(text('welcome')!=''){
+
+					flashvars+='&welcome='+text('welcome').replace(' ','%20');
+
+				}
+
+				
+
+				$('generated').style.display="block";				
+
+				code='<!-- INICIO: CODIGO FFMP3 GERADO AUTOMATICAMENTE CMAUDIOEVIDEO -->'+"\n"+
+
+					'<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'+width+'" height="'+height+'"'+bgcolor+'>'+"\n"+
+
+					'<param name="movie" value="http://www.cmaudioevideo.com/muses/'+swf+'" />'+"\n"+
+
+					'<param name="flashvars" value="'+flashvars+'" />'+"\n"+
+
+					'<param name="wmode" value="'+wmode+'" />'+"\n"+
+
+					'<param name="allowscriptaccess" value="always" />'+"\n"+
+
+					'<param name="scale" value="noscale" />'+"\n"+
+
+					'<embed src="http://www.cmaudioevideo.com/muses/'+swf+'" flashvars="'+flashvars+'" width="'+width+'" scale="noscale" '+
+
+					'height="'+height+'" wmode="'+wmode+'"'+bgcolor+' allowscriptaccess="always" type="application/x-shockwave-flash" />'+"\n"+
+
+					'</object>'+"\n"+
+
+					'<!-- FINAL: CODIGO FFMP3 GERADO AUTOMATICAMENTE CMAUDIOEVIDEO -->';
+
+				$('generated-code').value=code;
+
+				$('generated-working').innerHTML=code;
+
+			}
+
+			function ffmp3Callback(event,value){
+
+		    	// alert('event: "'+event+'", value: "'+value+'"');
+
+				$('ffmp3-last-event').innerHTML='<br/><strong>Lastest JS Event:</strong> "'+event+'" - Value: "'+value+'"';
+
+			}
+
+								
+
+			updateFormFields();
+
+		</script>
+
+	
+
+	<br/>
+
+	<br/>
+
+	<br/>
+
+	<br/>
+
+	<br/>
+
+	<br/>
+
+	<br/>
+
+	</div>
+
+  <br/>
+
+
+</body>
+
+</html>
